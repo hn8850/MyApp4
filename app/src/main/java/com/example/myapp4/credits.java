@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.io.InputStream;
 
+
+
 public class credits extends AppCompatActivity {
     Intent si;
     TextView tv;
@@ -28,6 +30,9 @@ public class credits extends AppCompatActivity {
     }
 
     public void go(View view) {
+        /**
+         *  Sends the user to the main activity.
+         */
         si = new Intent(this, MainActivity.class);
         startActivity(si);
     }

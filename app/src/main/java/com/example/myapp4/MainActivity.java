@@ -15,6 +15,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+
+/**
+   * @author		Harel Navon harelnavon2710@gmail.com
+   * @version	1.2
+   * @since		18/12/2021
+   * This is a small application desgined to try out custom Alert Dialog options!!
+   * The user can input text and it will be turned into a Toast message, as well as choose colors
+   * for the background!.
+ */
+
+
   public class MainActivity extends AppCompatActivity {
     AlertDialog.Builder adb1, adb2, adb3;
     AlertDialog ad1, ad2, ad3;
@@ -38,6 +49,10 @@ import android.widget.Toast;
 
 
     public void setColor(View view) {
+        /**
+         * Displays a Dialog box that the user can choose one color (out of red, green and blue)
+         * and changes the background color to it.
+         */
         int[] color = {0,0,0};
         adb1.setTitle("Choose a color!");
         adb1.setCancelable(false);
@@ -55,6 +70,10 @@ import android.widget.Toast;
     }
 
     public void combo(View view) {
+        /**
+         * Displays a Dialog box that the user can choose multiple color (out of red, green and blue)
+         * and changes the background color to the combination selected.
+         */
         int[] color = {0,0,0};
         pressed = false;
         adb2.setCancelable(false);
@@ -83,10 +102,16 @@ import android.widget.Toast;
     }
 
     public void reset(View view) {
+        /**
+         * Resets the background color back to white.
+         */
         linlay.setBackgroundColor(Color.WHITE);
     }
 
     public void tost(View view) {
+        /**
+         * Displays a Dialog box that the user can input text and have it turned into a Toast.
+         */
         adb3.setTitle("Enter some text please");
         adb3.setCancelable(false);
         final EditText et = new EditText(this);
