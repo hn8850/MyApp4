@@ -40,6 +40,7 @@ import android.widget.Toast;
     public void setColor(View view) {
         int[] color = {0,0,0};
         adb1.setTitle("Choose a color!");
+        adb1.setCancelable(false);
         adb1.setItems(namesOfColors, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -56,6 +57,7 @@ import android.widget.Toast;
     public void combo(View view) {
         int[] color = {0,0,0};
         pressed = false;
+        adb2.setCancelable(false);
         adb2.setTitle("Choose some colors!");
         adb2.setMultiChoiceItems(namesOfColors, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
@@ -114,7 +116,7 @@ import android.widget.Toast;
 
 
       public boolean onCreateOptionsMenu(Menu menu){
-        menu.add("Credits!");
+        getMenuInflater().inflate(R.menu.main,menu);
 
         return true;
       }
