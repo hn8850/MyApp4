@@ -1,4 +1,4 @@
-  package com.example.myapp4;
+package com.example.myapp4;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,24 +17,24 @@ import android.widget.Toast;
 
 
 /**
-   * @author		Harel Navon harelnavon2710@gmail.com
-   * @version	1.2
-   * @since		18/12/2021
-   * This is a small application desgined to try out custom Alert Dialog options!!
-   * The user can input text and it will be turned into a Toast message, as well as choose colors
-   * for the background!.
+ * @author Harel Navon harelnavon2710@gmail.com
+ * @version 1.2
+ * @since 18/12/2021 This is a small application desgined to try out custom Alert Dialog options!!
+ * The user can input text and it will be turned into a Toast message, as well as choose colors
+ * for the background!.
  */
 
 
-  public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     AlertDialog.Builder adb1, adb2, adb3;
     AlertDialog ad1, ad2, ad3;
-    final int[] colors = {Color.RED,Color.GREEN,Color.BLUE};
-    final String[] namesOfColors = {"Red","Green","Blue"};
+    final int[] colors = {Color.RED, Color.GREEN, Color.BLUE};
+    final String[] namesOfColors = {"Red", "Green", "Blue"};
     LinearLayout linlay;
     String str;
-    boolean pressed;
+    boolean flag;
     Intent si;
+    int[] count = {0, 0, 0};
 
 
     @Override
@@ -53,15 +53,14 @@ import android.widget.Toast;
          * Displays a Dialog box that the user can choose one color (out of red, green and blue)
          * and changes the background color to it.
          */
-        int[] color = {0,0,0};
+        int[] color = {0, 0, 0};
         adb1.setTitle("Choose a color!");
         adb1.setCancelable(false);
         adb1.setItems(namesOfColors, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //linlay.setBackgroundColor(colors[i]);
                 color[i] = 255;
-                linlay.setBackgroundColor(Color.rgb(color[0],color[1],color[2]));
+                linlay.setBackgroundColor(Color.rgb(color[0], color[1], color[2]));
             }
         });
 
@@ -74,23 +73,30 @@ import android.widget.Toast;
          * Displays a Dialog box that the user can choose multiple color (out of red, green and blue)
          * and changes the background color to the combination selected.
          */
-        int[] color = {0,0,0};
-        pressed = false;
+        int[] color = {0, 0, 0};
+        flag = false;
+        for (int j = 0; j < 3; j++) count[j] = 0;
+
         adb2.setCancelable(false);
         adb2.setTitle("Choose some colors!");
         adb2.setMultiChoiceItems(namesOfColors, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which, boolean isChecked) {
-                pressed = true;
+                count[which] = count[which] + 1;
+                if (count[which] % 2 == 0) count[which] = 0;
                 if (isChecked) color[which] = 255;
                 else if (color[which] == 255) color[which] = 0;
-                }
+            }
         });
         adb2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (pressed) {
-                    linlay.setBackgroundColor(Color.rgb(color[0],color[1],color[2]));
+                for (int j = 0; j < 3; j++) {
+                    if (count[j] % 2 != 0) flag = true;
+                    System.out.println(count[j]);
+                }
+                if (flag) {
+                    linlay.setBackgroundColor(Color.rgb(color[0], color[1], color[2]));
                 } else {
                     dialogInterface.dismiss();
                 }
@@ -122,7 +128,7 @@ import android.widget.Toast;
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (!et.equals("")) str = et.getText().toString();
                 else str = "";
-                Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
 
 
             }
@@ -137,22 +143,23 @@ import android.widget.Toast;
 
         ad3 = adb3.create();
         ad3.show();
-      }
+    }
 
 
-      public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
-      }
+    }
 
-      public boolean onOptionsItemSelected(MenuItem item)
-      {
-          si = new Intent(this,credits.class);
-          startActivity(si);
-          return true;
-      }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        /**
+         * Enables the user to be sent over to the credits Activity when using the options menu.
+         */
+        si = new Intent(this, credits.class);
+        startActivity(si);
+        return true;
+    }
 
 
-
-  }
+}
