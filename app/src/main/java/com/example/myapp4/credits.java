@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.io.InputStream;
 
 
-
 public class credits extends AppCompatActivity {
     Intent si;
     TextView tv;

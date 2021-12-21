@@ -28,7 +28,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     AlertDialog.Builder adb1, adb2, adb3;
     AlertDialog ad1, ad2, ad3;
-    final int[] colors = {Color.RED, Color.GREEN, Color.BLUE};
     final String[] namesOfColors = {"Red", "Green", "Blue"};
     LinearLayout linlay;
     String str;
