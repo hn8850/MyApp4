@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 for (int j = 0; j < 3; j++) {
                     if (count[j] % 2 != 0) flag = true;
-                    System.out.println(count[j]);
                 }
                 if (flag) {
                     linlay.setBackgroundColor(Color.rgb(color[0], color[1], color[2]));
