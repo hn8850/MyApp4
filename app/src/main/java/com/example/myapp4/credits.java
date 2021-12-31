@@ -13,7 +13,6 @@ import java.io.InputStream;
 
 
 public class credits extends AppCompatActivity {
-    Intent si;
     TextView tv;
 
     @Override
@@ -32,8 +31,7 @@ public class credits extends AppCompatActivity {
         /**
          *  Sends the user to the main activity.
          */
-        si = new Intent(this, MainActivity.class);
-        startActivity(si);
+        finish();
     }
 }
 
