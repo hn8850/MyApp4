@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     final String[] namesOfColors = {"Red", "Green", "Blue"};
     LinearLayout linlay;
     String str;
-    boolean flag;
+    boolean doublecheck;
     Intent si;
     int[] count = {0, 0, 0};
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
          * and changes the background color to the combination selected.
          */
         int[] color = {0, 0, 0};
-        flag = false;
+        doublecheck = false;
         for (int j = 0; j < 3; j++) count[j] = 0;
 
         adb2.setCancelable(false);
@@ -91,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 for (int j = 0; j < 3; j++) {
-                    if (count[j] % 2 != 0) flag = true;
+                    if (count[j] % 2 != 0) doublecheck = true;
                 }
-                if (flag) {
+                if (doublecheck) {
                     linlay.setBackgroundColor(Color.rgb(color[0], color[1], color[2]));
                 } else {
                     dialogInterface.dismiss();
