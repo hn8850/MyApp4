@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public void setColor(View view) {
         /**
          * Displays a Dialog box that the user can choose one color (out of red, green and blue)
